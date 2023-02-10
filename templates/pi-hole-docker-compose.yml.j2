@@ -18,7 +18,9 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
+{% if pihole_dhcp %}
       - "67:67/udp"
+{% endif %}
 {% if domain_name_enable and domain_name and domain_pihole %}
       - "38080:80/tcp"
 {% else %}

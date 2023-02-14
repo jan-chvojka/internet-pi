@@ -26,3 +26,10 @@
     build: false
     restarted: true
   become: false
+
+- name: Restart influxdb
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/influxdb/"
+    build: false
+    restarted: true
+  become: false

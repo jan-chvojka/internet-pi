@@ -1,0 +1,25 @@
+# {{ ansible_managed }}
+---
+version: "3"
+
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2.6-alpine
+    ports:
+      - "8086:8086"
+      - "8088:8088"
+      - "8089:8089"
+      - "8091:8091"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: '{{ influxdb_mode }}'
+      DOCKER_INFLUXDB_INIT_USERNAME: '{{ influxdb_username }}'
+      DOCKER_INFLUXDB_INIT_PASSWORD: '{{ influxdb_password }}'
+      DOCKER_INFLUXDB_INIT_ORG: '{{ influxdb_org }}'
+      DOCKER_INFLUXDB_INIT_BUCKET: '{{ influxdb_bucket }}'
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: '{{ influxdb_admin_token }}'
+      DOCKER_INFLUXDB_INIT_RETENTION: '{{ influxdb_retention }}'
+
+    volumes:
+      - './influxdb/:/var/lib/influxdb2'
+    restart: unless-stopped

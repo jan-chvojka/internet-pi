@@ -48,3 +48,14 @@ airgradient_sensors:
 
 # Starlink configuration. (Also requires `monitoring_enable`)
 starlink_enable: false
+
+# InfluxDB configuration.
+influxdb_enable: false
+
+influxdb_mode: 'setup'
+influxdb_username: 'user'
+influxdb_password: 'pasword'
+influxdb_org: 'org'
+influxdb_bucket: 'bucket'
+influxdb_admin_token: 'someuniquevalue'
+influxdb_retention: '1w'

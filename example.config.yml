@@ -2,6 +2,10 @@
 # Location where configuration files will be stored.
 config_dir: '~'
 
+# Specify ansible/rpi user - might not needed because it's in the ini file
+# but for me it didnt worked without it.
+ansible_user: 'administrator'
+
 # Domain names configuration (related services need to be enabled).
 domain_name_enable: false
 domain_name: 'home.local'
@@ -59,3 +63,6 @@ influxdb_org: 'org'
 influxdb_bucket: 'bucket'
 influxdb_admin_token: 'someuniquevalue'
 influxdb_retention: '1w'
+
+# UniFi configuration
+unifi_enable: false

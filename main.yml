@@ -53,3 +53,7 @@
     - name: Set up InfluxDB.
       ansible.builtin.import_tasks: tasks/influxdb.yml
       when: influxdb_enable
+
+    - name: Set up UniFi.
+      ansible.builtin.import_tasks: tasks/unifi.yml
+      when: unifi_enable

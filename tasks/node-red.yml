@@ -1,0 +1,23 @@
+---
+- name: Create Node-Red folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/node-red"
+    state: directory
+    mode: 0755
+  become: false
+
+- name: Copy Node-Red docker-compose template to Pi.
+  ansible.builtin.template:
+    src: templates/node-red-docker-compose.yml.j2
+    dest: "{{ config_dir }}/node-red/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart node-red
+
+# TODO: The first time this playbook is run, the `pi` user may not be added
+# to the `docker` group, so this task may fail.
+- name: Ensure Node-Red is running.
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/node-red/"
+    build: false
+  become: false

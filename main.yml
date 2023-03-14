@@ -57,3 +57,7 @@
     - name: Set up UniFi.
       ansible.builtin.import_tasks: tasks/unifi.yml
       when: unifi_enable
+
+    - name: Set up Node-Red.
+      ansible.builtin.import_tasks: tasks/node-red.yml
+      when: node_red_enable

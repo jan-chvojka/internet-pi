@@ -3,6 +3,7 @@
   ansible.builtin.file:
     path: "{{ config_dir }}/node-red"
     state: directory
+# TODO: Not working here, had to sudo chown -R 1000:1000 {{ config_dir }}/node-red
     mode: 0755
   become: false
 

@@ -71,7 +71,4 @@ influxdb_retention: '1w'
 unifi_enable: false
 
 # Node-Red configuration
-node_red_enable: false
-
-# UniFi configuration
-nodered_enable: true
+nodered_enable: false

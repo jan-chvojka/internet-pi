@@ -49,7 +49,7 @@
     - name: Set up Starlink Monitoring.
       ansible.builtin.import_tasks: tasks/starlink.yml
       when: starlink_enable
-    
+
     - name: Set up InfluxDB.
       ansible.builtin.import_tasks: tasks/influxdb.yml
       when: influxdb_enable
@@ -60,4 +60,4 @@
 
     - name: Set up Node-Red.
       ansible.builtin.import_tasks: tasks/node-red.yml
-      when: node_red_enable
+      when: nodered_enable

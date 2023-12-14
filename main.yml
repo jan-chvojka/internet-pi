@@ -30,6 +30,11 @@
     - name: Setup Docker.
       ansible.builtin.import_tasks: tasks/docker.yml
 
+    # - name: Set up Traefik.
+    #   ansible.builtin.import_tasks: tasks/traefik.yml
+
+    # - name: Telegraf missing.
+
     - name: Set up Internet Monitoring.
       ansible.builtin.import_tasks: tasks/internet-monitoring.yml
       when: monitoring_enable
@@ -61,3 +66,7 @@
     - name: Set up Node-Red.
       ansible.builtin.import_tasks: tasks/node-red.yml
       when: nodered_enable
+
+    - name: Set up Zigbee2MQTT.
+      ansible.builtin.import_tasks: tasks/zigbee2mqtt.yml
+      when: zigbee2mqtt_enable      

@@ -72,3 +72,6 @@ unifi_enable: false
 
 # Node-Red configuration
 nodered_enable: false
+
+# Node-Red configuration
+zigbee2mqtt_enable: false

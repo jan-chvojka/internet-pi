@@ -67,6 +67,6 @@
       ansible.builtin.import_tasks: tasks/node-red.yml
       when: nodered_enable
 
-    - name: Set up Zigbee2MQTT.
-      ansible.builtin.import_tasks: tasks/zigbee2mqtt.yml
-      when: zigbee2mqtt_enable      
+    # - name: Set up Zigbee2MQTT.
+    #   ansible.builtin.import_tasks: tasks/zigbee2mqtt.yml
+    #   when: zigbee2mqtt_enable

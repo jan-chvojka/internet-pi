@@ -1,20 +1,20 @@
 ---
 # Location where configuration files will be stored.
-config_dir: '~'
+config_dir: "~"
 
 # Specify ansible/rpi user - might not needed because it's in the ini file
 # but for me it didnt worked without it.
-ansible_user: 'administrator'
+ansible_user: "administrator"
 
 # Domain names configuration (related services need to be enabled).
 domain_name_enable: false
-domain_name: 'home.local'
-domain_pihole: 'pihole'          # to access pihole via: http://pihole.home.local
-domain_grafana: 'grafana'        # to access grafana via: http://grafana.home.local
-domain_prometheus: 'prometheus'  # to access prometheus via: http://prometheus.home.local
-domain_unifi: 'unifi'             # to access unifi via: http://nodered.home.local
-domain_influxdb: 'influxdb'       # to access influxdb via: http://influxdb.home.local
-domain_nodered: 'nodered'         # to access nodered via: http://nodered.home.local
+domain_name: "home.local"
+domain_pihole: "pihole" # to access pihole via: http://pihole.home.local
+domain_grafana: "grafana" # to access grafana via: http://grafana.home.local
+domain_prometheus: "prometheus" # to access prometheus via: http://prometheus.home.local
+domain_unifi: "unifi" # to access unifi via: http://nodered.home.local
+domain_influxdb: "influxdb" # to access influxdb via: http://influxdb.home.local
+domain_nodered: "nodered" # to access nodered via: http://nodered.home.local
 
 # Pi-hole configuration.
 pihole_enable: true
@@ -27,7 +27,7 @@ monitoring_enable: true
 monitoring_grafana_admin_password: "admin"
 monitoring_speedtest_interval: 60m
 monitoring_ping_interval: 5s
-monitoring_ping_hosts:  # [URL];[HUMAN_READABLE_NAME]
+monitoring_ping_hosts: # [URL];[HUMAN_READABLE_NAME]
   - http://www.google.com/;google.com
   - https://github.com/;github.com
   - https://www.apple.com/;apple.com
@@ -35,8 +35,8 @@ monitoring_ping_hosts:  # [URL];[HUMAN_READABLE_NAME]
 # Prometheus configuration.
 prometheus_monitor_prometheus: false
 prometheus_node_exporter_targets:
-  - 'nodeexp:9100'
-prometheus_extra_scrape_configs: ''
+  - "nodeexp:9100"
+prometheus_extra_scrape_configs: ""
 prometheus_tsdb_retention_time: 90d
 
 # Shelly Plug configuration. (Also requires `monitoring_enable`)
@@ -59,13 +59,13 @@ starlink_enable: false
 # InfluxDB configuration.
 influxdb_enable: false
 
-influxdb_mode: 'setup'
-influxdb_username: 'user'
-influxdb_password: 'pasword'
-influxdb_org: 'org'
-influxdb_bucket: 'bucket'
-influxdb_admin_token: 'someuniquevalue'
-influxdb_retention: '1w'
+influxdb_mode: "setup"
+influxdb_username: "user"
+influxdb_password: "pasword"
+influxdb_org: "org"
+influxdb_bucket: "bucket"
+influxdb_admin_token: "someuniquevalue"
+influxdb_retention: "1w"
 
 # UniFi configuration
 unifi_enable: false
@@ -75,3 +75,6 @@ nodered_enable: false
 
 # Node-Red configuration
 zigbee2mqtt_enable: false
+
+# Traefk configuration
+traefik_enable: false

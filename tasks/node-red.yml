@@ -1,9 +1,11 @@
 ---
-- name: Create Node-Red folder on Pi.
+- name: Ensure Node-Red directory exists.
   ansible.builtin.file:
     path: "{{ config_dir }}/node-red"
     state: directory
-# TODO: Not working here, had to sudo chown -R 1000:1000 {{ config_dir }}/node-red
+    # TODO: Have problem running and sharing data directory. Permissions in the host OS needs to be changed:
+    # ? Not working here, had to sudo chown -R 1000:1000 {{ config_dir }}/node-red
+    # ! really works: sudo chmod -R 777 ./data
     mode: 0755
   become: false
 
@@ -11,14 +13,14 @@
   ansible.builtin.template:
     src: templates/node-red-docker-compose.yml.j2
     dest: "{{ config_dir }}/node-red/docker-compose.yml"
-    mode: '0640'
+    mode: "0640"
   become: false
   notify: Restart node-red
 
 # TODO: The first time this playbook is run, the `pi` user may not be added
 # to the `docker` group, so this task may fail.
 - name: Ensure Node-Red is running.
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/node-red/"
-    build: false
+    build: never
   become: false

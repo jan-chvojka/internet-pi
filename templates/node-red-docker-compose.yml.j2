@@ -9,5 +9,13 @@ services:
     ports:
       - "1880:1880"
     volumes:
-      - './node-red/:/data'
+      - "./data/:/data"
     restart: unless-stopped
+    # Doesn't seem to have any effect in permission error addressed in node-red.yml
+    user: "1000:1000"
+{% if traefik_enable and domain_name_enable and domain_name and domain_nodered %}    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.node_red.rule=Host(`{{ domain_nodered }}.{{ domain_name }}`)"
+      - "traefik.http.routers.node_red.entrypoints=web"    
+{% endif %}

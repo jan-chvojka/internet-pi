@@ -1,0 +1,20 @@
+# {{ ansible_managed }}
+---
+version: "3"
+
+services:
+  timescaledb:
+    container_name: timescaledb
+    image: timescale/timescaledb-ha:pg16
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./data:/home/postgres/pgdata/data"
+    restart: unless-stopped
+    # user: "1000:1000"
+    user: "0:0"
+    environment:
+      #- PUID=1000
+      #- PGID=1000
+      #- TZ=Etc/UTC    
+      POSTGRES_PASSWORD: '{{ timescaledb_password }}'

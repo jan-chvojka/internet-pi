@@ -73,8 +73,12 @@ unifi_enable: false
 # Node-Red configuration
 nodered_enable: false
 
-# Node-Red configuration
+# Zigbee2mgtt configuration
 zigbee2mqtt_enable: false
 
 # Traefk configuration
 traefik_enable: false
+
+# Timescaledb configuration
+timescaledb_enable: false
+timescaledb_password: "pasword"

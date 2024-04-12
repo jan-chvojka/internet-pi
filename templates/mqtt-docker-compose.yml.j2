@@ -11,6 +11,7 @@ services:
       - "9001:9001"
     volumes:
       - "./data:/mosquitto"
+      - "./mosquitto.conf:/mosquitto.conf"
     restart: unless-stopped
     user: "0:0"
-    command: "mosquitto -c /mosquitto-no-auth.conf"
+    command: "mosquitto -c /mosquitto.conf"

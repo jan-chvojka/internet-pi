@@ -6,6 +6,12 @@
     mode: 0755
   become: false
 
+- name: Copy mqtt config to Pi.
+  ansible.builtin.template:
+    src: configs/mqtt/mosquitto.conf
+    dest: "{{ config_dir }}/mqtt/mosquitto.conf"
+    mode: "0640"
+
 - name: Copy mqtt docker-compose template to Pi.
   ansible.builtin.template:
     src: templates/mqtt-docker-compose.yml.j2

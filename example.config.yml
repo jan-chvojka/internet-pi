@@ -15,6 +15,7 @@ domain_prometheus: "prometheus" # to access prometheus via: http://prometheus.ho
 domain_unifi: "unifi" # to access unifi via: http://nodered.home.local
 domain_influxdb: "influxdb" # to access influxdb via: http://influxdb.home.local
 domain_nodered: "nodered" # to access nodered via: http://nodered.home.local
+domain_mqttx_web: "mqttx" # to access mqttx via: http://mqttx.home.local
 
 # Pi-hole configuration.
 pihole_enable: true
@@ -82,3 +83,9 @@ traefik_enable: false
 # Timescaledb configuration
 timescaledb_enable: false
 timescaledb_password: "pasword"
+
+# MQTT configuration
+mqtt_enabled: false
+
+# MQTTX Web configuration
+mqttx_web_enabled: false

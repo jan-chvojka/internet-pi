@@ -1,0 +1,23 @@
+---
+- name: Ensure mqttx-web directory exists.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/mqttx-web"
+    state: directory
+    mode: 0755
+  become: false
+
+- name: Copy mqttx-web docker-compose template to Pi.
+  ansible.builtin.template:
+    src: templates/mqttx-web-docker-compose.yml.j2
+    dest: "{{ config_dir }}/mqttx-web/docker-compose.yml"
+    mode: "0640"
+  become: false
+  notify: Restart mqttx-web
+
+# TODO: The first time this playbook is run, the `pi` user may not be added
+# to the `docker` group, so this task may fail.
+- name: Ensure mqttx-web is running.
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/mqttx-web/"
+    build: never
+  become: false

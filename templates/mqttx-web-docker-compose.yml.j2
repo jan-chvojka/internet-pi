@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+---
+version: "3"
+
+services:
+  mqttx-web:
+    container_name: mqttx-web
+    image: emqx/mqttx-web
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+{% if traefik_enable and domain_name_enable and domain_name and domain_mqttx_web %}    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mqttx_web.rule=Host(`{{ domain_mqttx_web }}.{{ domain_name }}`)"
+      - "traefik.http.routers.mqttx_web.entrypoints=web"
+{% endif %}

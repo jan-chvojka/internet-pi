@@ -61,3 +61,17 @@
     build: never
     state: restarted
   become: false
+
+- name: Restart mqtt
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/mqtt/"
+    build: never
+    state: restarted
+  become: false
+
+- name: Restart mqttx-web
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/mqttx-web/"
+    build: never
+    state: restarted
+  become: false

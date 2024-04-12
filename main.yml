@@ -71,6 +71,14 @@
       ansible.builtin.import_tasks: tasks/timescaledb.yml
       when: timescaledb_enable
 
+    - name: Set up MQTT.
+      ansible.builtin.import_tasks: tasks/mqtt.yml
+      when: mqtt_enabled
+
+    - name: Set up MQTTX-web.
+      ansible.builtin.import_tasks: tasks/mqttx-web.yml
+      when: mqttx_web_enabled
+
     # - name: Set up Zigbee2MQTT.
     #   ansible.builtin.import_tasks: tasks/zigbee2mqtt.yml
     #   when: zigbee2mqtt_enable

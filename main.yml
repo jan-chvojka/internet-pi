@@ -1,7 +1,7 @@
 ---
 - name: Configure Internet Pi.
   hosts: internet_pi
-  become: true
+  become: false
 
   pre_tasks:
     - name: Load configuration (with defaults from example file).

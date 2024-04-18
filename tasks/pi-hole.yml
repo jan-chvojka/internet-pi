@@ -28,6 +28,7 @@
     path: "/etc/resolvconf.conf"
     state: touch
     mode: "744"
+  when: pihole_dns_enable
 
 - name: Update resolveconf for local name server use.
   ansible.builtin.lineinfile:
@@ -35,8 +36,9 @@
     dest: "/etc/resolvconf.conf"
     regexp: "^#?name_servers="
   register: resolvconf_file
+  when: pihole_dns_enable
 
 - name: Regenerate resolvconf if file is changed.
   ansible.builtin.command: resolvconf -u
   changed_when: false
-  when: resolvconf_file is changed
+  when: pihole_dns_enable and resolvconf_file is changed

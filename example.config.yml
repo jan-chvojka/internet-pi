@@ -4,6 +4,7 @@ config_dir: "~"
 
 # Specify ansible/rpi user - might not needed because it's in the ini file
 # but for me it didnt worked without it.
+# If you are running it in WSL, set it to the wsl user.
 ansible_user: "administrator"
 
 # Domain names configuration (related services need to be enabled).
@@ -19,6 +20,8 @@ domain_mqttx_web: "mqttx" # to access mqttx via: http://mqttx.home.local
 
 # Pi-hole configuration.
 pihole_enable: true
+# Disable 53 port binding when true. Useful in WSL.
+pihole_dns_enable: true
 pihole_hostname: pihole
 pihole_timezone: America/Chicago
 pihole_password: "change-this-password"

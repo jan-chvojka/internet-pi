@@ -13,19 +13,20 @@ networks:
     name: internet-monitoring-back-tier
 
 services:
-{% if domain_name_enable %}
-  nginx-proxy:
-    image: nginxproxy/nginx-proxy:latest
-    restart: always
-    ports:
-      - "80:80"
-    networks:
-      - back-tier
-      - front-tier
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-{% endif %}
+# Superseeded by Traefik
+#{% if domain_name_enable %}
+#  nginx-proxy:
+#    image: nginxproxy/nginx-proxy:latest
+#    restart: always
+#    ports:
+#      - "80:80"
+#    networks:
+#      - back-tier
+#      - front-tier
+#    volumes:
+#      - /etc/localtime:/etc/localtime:ro
+#      - /var/run/docker.sock:/tmp/docker.sock:ro
+#{% endif %}
 
   prometheus:
     image: prom/prometheus:latest
@@ -48,8 +49,9 @@ services:
     networks:
       - back-tier
 {% if domain_name_enable and domain_name and domain_prometheus %}
-    depends_on:
-      - nginx-proxy
+    # TODO: It should not be neccessary with traefik labels.
+    #depends_on:
+    #  - nginx-proxy
     environment:
       - VIRTUAL_HOST={{ domain_prometheus }}.{{ domain_name }}
       - VIRTUAL_PORT=9090
@@ -72,7 +74,8 @@ services:
     depends_on:
       - prometheus
 {% if domain_name_enable and domain_name and domain_grafana %}
-      - nginx-proxy
+      # TODO: It should not be neccessary with traefik labels.
+      #- nginx-proxy
     environment:
       - VIRTUAL_HOST={{ domain_grafana }}.{{ domain_name }}
       - VIRTUAL_PORT=3000

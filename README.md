@@ -144,3 +144,33 @@ MIT
 ## Author
 
 This project was created in 2021 by [Jeff Geerling](https://www.jeffgeerling.com/).
+
+## Services
+
+### MQTT - Mosquitto broker
+
+
+> Port: 1883 - mqtt port
+>
+> Port: 9001 - web socket
+
+
+### MQTTX - Web based mqtt browser
+
+Provides web interface to be able to subscribe and mqtt topics. 
+
+> Port: 8081
+
+```
+Setup
+
++ New connection
+Parameters:
+
+Name: doesn't matter
+Client Name: doesn't matter
+Host: ws://localhost
+Port: 9001
+Path: /
+
+```

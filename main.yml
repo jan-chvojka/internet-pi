@@ -1,7 +1,7 @@
 ---
 - name: Configure Internet Pi.
   hosts: internet_pi
-  become: false
+  become: true
 
   pre_tasks:
     - name: Load configuration (with defaults from example file).
@@ -16,12 +16,14 @@
         cache_valid_time: 3600
       when:
         - ansible_facts.os_family == "Debian"
+        - enable_update
 
     - name: Ensure pacman cache is up to date
       community.general.pacman:
         update_cache: true
       when:
         - ansible_facts.os_family == "Archlinux"
+        - enable_update
 
   handlers:
     - name: Include handlers.
